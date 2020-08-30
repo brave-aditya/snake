@@ -1,0 +1,89 @@
+
+body{
+    margin:0;
+    padding:0;
+    background:#c0c0c0;
+}
+.box1{
+  margin-top:30vh;
+}
+.box1 h1{
+    color:white;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 48px;
+    text-shadow:2px 2px black;
+}
+.box2{
+  padding-top: 15vh;
+  position: relative;
+}
+.box2 h1{
+  color:white;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 48px;
+  text-shadow:2px 2px black;
+}
+.grid{
+    display:grid;
+    margin-top:15px;
+    border:10px solid white ;
+    grid-template-columns:repeat(20,5%);
+    justify-content: center;
+    grid-auto-rows: 2.5vw;
+    position:sticky;
+    background:#191919;
+}
+.cell{
+    height:2.5vw;
+    width:2.5vw;
+    border:none;
+    font-size: 30px;
+    outline:none;
+    position:fixed;
+}
+@media screen and (max-width:600px)
+{
+  .cell{
+    width:5vw;
+    height:5vw;
+  }
+  .grid{
+    grid-auto-rows: 5vw;
+  }
+  .box1{
+    margin-top:0;
+  }
+}
+.head {
+    background:#00ff00;
+    z-index:1;
+    box-shadow:0 0 5px 5px #00ff00; 
+    border:1px ridge white;
+}
+.body{
+background:cyan;
+border:1px ridge white;
+}
+.no{
+    background:#191919;
+    z-index:0;
+}
+.food{
+    background:red;
+    border-radius: 40px;
+    z-index:1;
+    border-bottom:1px ridge white;
+    border-left:1px ridge white;
+    animation: glow 0.8s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 10px red;
+  }
+  to {
+    box-shadow: 0 0 10px 5px red;
+  }
+}
