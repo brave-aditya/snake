@@ -37,13 +37,13 @@ const Board = ({ board }) => {
         <h1>Your Score is : <span className="w-[50px] bg-[#fff] text-[#000]"> {score} </span></h1>
         <h1 className="lg:text-2xl mt-4">Keep going you can do better than that!</h1>
       </div>
-      <ReactTouchEvents onSwipe={handleSwipe}>
       <div className="container sticky col-span-3 lg:col-span-6 place-self-center border-4 rounded-lg w-full lg:w-fit">
+      <ReactTouchEvents onSwipe={handleSwipe}>
         <div className="container w-full lg:w-fit lg:h-[calc(100vh-95px)] aspect-square justify-center items-center grid grid-cols-20 gridpattern">
           {ab}
         </div>
+        </ReactTouchEvents>
       </div>
-      </ReactTouchEvents>
       <div className="container col-span-3 place-self-center text-center w-full lg:text-2xl mt-4">
         <h1 className="lg:text-2xl">If you like this game then please visit my portfolio website <p><a href="https://aditya-swart.vercel.app" className="underline">aditya-swart.vercel.app</a></p> and drop a follow on my socials.</h1>
       </div>
