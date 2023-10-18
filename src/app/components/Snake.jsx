@@ -45,7 +45,7 @@ const Board = ({ board }) => {
       </div>
       </ReactTouchEvents>
       <div className="container col-span-3 place-self-center text-center w-full lg:text-2xl mt-4">
-        <h1 className="lg:text-2xl">If you like this game then please visit my portfolio website <p><a href="https://www.aditya-swart.vercel.app" className="underline">aditya-swart.vercel.app</a></p> and drop a follow on my socials.</h1>
+        <h1 className="lg:text-2xl">If you like this game then please visit my portfolio website <p><a href="https://aditya-swart.vercel.app" className="underline">aditya-swart.vercel.app</a></p> and drop a follow on my socials.</h1>
       </div>
     </div>
   );
