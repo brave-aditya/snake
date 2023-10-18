@@ -5,7 +5,7 @@ import ReactTouchEvents from "react-touch-events";
 var score = 0;
 var direct = "right";
 const Board = ({ board }) => {
-  const ab = board.map((x) => <Square val={x} />);
+  const ab = board.map((x) => <Square key={x.index} val={x} />);
   const handleSwipe = (direction) => {
     switch (direction) {
       case "left":
