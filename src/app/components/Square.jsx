@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Square = ({ val }) => {
+const Square = ({index, val }) => {
   var background;
   if (val === "no opacity-0") {
     background = "bg-snakebg";

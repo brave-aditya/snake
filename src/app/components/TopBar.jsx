@@ -15,6 +15,7 @@ const TopBar = ({ theme }) => {
           width={40}
           height={40}
           className="px-2 sm:px-1"
+          alt="snake"
         />
       </div>
       <span className="hidden sm:block">

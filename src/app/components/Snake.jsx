@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Square from "./Square";
-import ReactTouchEvents from "react-touch-events";
+import { useSwipeable } from 'react-swipeable';
 
 var score = 0;
 var direct = "right";
 const Board = ({ board }) => {
-  const ab = board.map((x) => <Square key={x.index} val={x} />);
+  const ab = board.map((x, index) => <Square key={x.index} val={x} />);
   const handleSwipe = (direction) => {
     switch (direction) {
       case "left":
@@ -31,6 +31,30 @@ const Board = ({ board }) => {
       default:
     }
   }
+  const handlers = useSwipeable({
+    onSwipedLeft: (e)  => {
+      if (direct !== "right") {
+        direct = "left";
+      }
+    },
+    onSwipedRight: (e)  => {
+      if (direct !== "left") {
+        direct = "right";
+      }
+    },
+    onSwipedUp: (e)  => {
+      if (direct !== "down") {
+        direct = "up";
+      }
+    },
+    onSwipedDown: (e)  => {
+      if (direct !== "up") {
+        direct = "down";
+      }
+    },
+    preventScrollOnSwipe: true, 
+
+  });
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
       <div className="container col-span-3 place-self-center text-center lg:text-2xl w-full mb-2">
@@ -38,11 +62,9 @@ const Board = ({ board }) => {
         <h1 className="lg:text-2xl mt-4">Keep going you can do better than that!</h1>
       </div>
       <div className="container sticky col-span-3 lg:col-span-6 place-self-center border-4 rounded-lg w-full lg:w-fit">
-      <ReactTouchEvents onSwipe={handleSwipe}>
-        <div className="container w-full lg:w-fit lg:h-[calc(100vh-95px)] aspect-square justify-center items-center grid grid-cols-20 gridpattern">
+        <div {...handlers} className="container w-full lg:w-fit lg:h-[calc(100vh-95px)] aspect-square justify-center items-center grid grid-cols-20 gridpattern">
           {ab}
         </div>
-        </ReactTouchEvents>
       </div>
       <div className="container col-span-3 place-self-center text-center w-full lg:text-2xl mt-4">
         <h1 className="lg:text-2xl">If you like this game then please visit my portfolio website <p><a href="https://aditya-swart.vercel.app" className="underline">aditya-swart.vercel.app</a></p> and drop a follow on my socials.</h1>

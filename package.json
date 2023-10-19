@@ -12,8 +12,10 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-easy-swipe": "^0.0.23",
     "react-icons": "^4.11.0",
-    "react-touch-events": "^3.0.0"
+    "react-swipeable": "^7.0.1",
+    "react-touch-events": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10",
