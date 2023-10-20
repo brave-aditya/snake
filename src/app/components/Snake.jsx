@@ -1,73 +1,72 @@
 import React, { useEffect, useState } from "react";
 import Square from "./Square";
-import { useSwipeable } from 'react-swipeable';
+import { useSwipeable } from "react-swipeable";
 
 var score = 0;
+var highscore = 0;
 var direct = "right";
 const Board = ({ board }) => {
-  const ab = board.map((x, index) => <Square key={x.index} val={x} />);
-  const handleSwipe = (direction) => {
-    switch (direction) {
-      case "left":
-        if (direct !== "right") {
-          direct = "left";
-        }
-        break;
-      case "top":
-        if (direct !== "down") {
-          direct = "up";
-        }
-        break;
-      case "right":
-        if (direct !== "left") {
-          direct = "right";
-        }
-        break;
-      case "bottom":
-        if (direct !== "up") {
-          direct = "down";
-        }
-        break;
-      default:
-    }
+  if(score>highscore){
+    highscore=score;
   }
+  const ab = board.map((x, index) => <Square key={x.index} val={x} />);
+
   const handlers = useSwipeable({
-    onSwipedLeft: (e)  => {
+    onSwipedLeft: (e) => {
       if (direct !== "right") {
         direct = "left";
       }
     },
-    onSwipedRight: (e)  => {
+    onSwipedRight: (e) => {
       if (direct !== "left") {
         direct = "right";
       }
     },
-    onSwipedUp: (e)  => {
+    onSwipedUp: (e) => {
       if (direct !== "down") {
         direct = "up";
       }
     },
-    onSwipedDown: (e)  => {
+    onSwipedDown: (e) => {
       if (direct !== "up") {
         direct = "down";
       }
     },
-    preventScrollOnSwipe: true, 
-
+    preventScrollOnSwipe: true,
   });
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
       <div className="container col-span-3 place-self-center text-center lg:text-2xl w-full mb-2">
-        <h1>Your Score is : <span className="w-[50px] bg-[#fff] text-[#000]"> {score} </span></h1>
-        <h1 className="lg:text-2xl mt-4">Keep going you can do better than that!</h1>
+        <h1 className="lg:text-2xl">
+          Your Score is :{" "}
+          <span className="w-[50px] bg-[#fff] text-[#000]"> {score} </span>
+        </h1>
+        <h1 className="lg:text-2xl mt-2">
+          Your Highest Score is :{" "}
+          <span className="w-[50px] bg-[#fff] text-[#000]"> {highscore} </span>
+        </h1>
+        <h1 className="lg:text-2xl mt-2">
+          Keep going you can do better than that!
+        </h1>
       </div>
       <div className="container sticky col-span-3 lg:col-span-6 place-self-center border-4 rounded-lg w-full lg:w-fit">
-        <div {...handlers} className="container w-full lg:w-fit lg:h-[calc(100vh-95px)] aspect-square justify-center items-center grid grid-cols-20 gridpattern">
+        <div
+          {...handlers}
+          className="container w-full lg:w-fit lg:h-[calc(100vh-95px)] aspect-square justify-center items-center grid grid-cols-20 gridpattern"
+        >
           {ab}
         </div>
       </div>
       <div className="container col-span-3 place-self-center text-center w-full lg:text-2xl mt-4">
-        <h1 className="lg:text-2xl">If you like this game then please visit my portfolio website <p><a href="https://aditya-swart.vercel.app" className="underline">aditya-swart.vercel.app</a></p> and drop a follow on my socials.</h1>
+        <h1 className="lg:text-2xl">
+          If you like this game then please visit my portfolio website{" "}
+          <p>
+            <a href="https://aditya-swart.vercel.app" className="underline">
+              aditya-swart.vercel.app
+            </a>
+          </p>{" "}
+          and drop a follow on my socials.
+        </h1>
       </div>
     </div>
   );
@@ -103,6 +102,9 @@ const Snake = () => {
         alert(
           "Game Over \n Your score is:" + score + "\n press OK for a new game"
         );
+        if(score>highscore){
+          highscore=score;
+        }
         score = 0;
         let j = snake[0];
         snake = [];
